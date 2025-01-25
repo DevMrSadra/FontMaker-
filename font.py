@@ -165,7 +165,7 @@ async def font_generator(client, message):
         await message.reply("لطفا فقط متن انگلیسی ارسال کنید.")
         return
 
-    user_texts[user_id] = text  # Store the original text
+    user_texts[user_id] = text  #DevMrSadra
     current_pages[user_id] = 0
     reply_markup = get_font_buttons(text, current_pages[user_id])
     await message.reply("یکی از فونت‌های زیر را انتخاب کنید:", reply_markup=reply_markup)
@@ -178,7 +178,7 @@ async def font_selector(client, callback_query: CallbackQuery):
 
     if data.startswith("font_"):
         font_index = int(data.split("_")[1])
-        original_text = user_texts.get(user_id)  # Retrieve the original text
+        original_text = user_texts.get(user_id)  
         if original_text:
             transformed_text = transform_text(original_text, fonts[font_index])
             await message.edit_text(f"متن شما:\n\n{transformed_text}",)
